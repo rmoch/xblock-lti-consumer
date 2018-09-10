@@ -13,6 +13,10 @@
     </div>
 % endif
 
+
+<!-- We have to force lti_consumer base CSS class then iframe will get get correct CSS rule,
+     because our xblock will be name lti_consumer_Whatever
+-->
 <div
     id="${element_id}"
     class="${element_class} lti-consumer-container"

@@ -40,7 +40,7 @@ setup(
     ],
     entry_points={
         'xblock.v1': [
-            'lti_consumer = lti_consumer:LtiConsumerXBlock',
+            'lti_consumer = lti_consumer:FUNLtiConsumerXBlockBase',
         ]
     },
     package_data=package_data("lti_consumer", ["static", "templates", "public"]),

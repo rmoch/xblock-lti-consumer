@@ -31,8 +31,11 @@ class FUNLtiConsumerXBlockBase(LtiConsumerXBlock):
         """
         self.editable_fields = list(self.editable_fields)
         name = self.description
-        for field, value in self.get_configuration(name)['default_values'].items():
-            self.editable_fields.pop(self.editable_fields.index(field))
+	try:
+            for field, value in self.get_configuration(name)['default_values'].items():
+                self.editable_fields.pop(self.editable_fields.index(field))
+	except TypeError:
+	    pass
 
     @classmethod
     def get_configuration(self, name):
@@ -75,8 +78,9 @@ def add_dynamic_components(XBLOCKS_FACTORY, advanced_component_templates,
                 advanced_component_templates['templates'].append(
                     create_template_dict(
                         name=display_name,
-                        cat=component["module"],
-                        boilerplate_name=class_info["name"]
+                        category=component["module"],
+                        support_level=False,
+			boilerplate_name=class_info["name"]
                         )
                 )
             # Remove original overrided component
